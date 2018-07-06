@@ -6,10 +6,11 @@ class ContactosController < ApplicationController
   def create
     @contacto = Contacto.new(contacto_params)
     if @contacto.save
-      redirect_to root_path
+      flash[:succes] = "Good Job!"
+      redirect_to new_contacto_path
     else
-      flash[:danger] = @contact.errors.full_messages.join(". ")
-      redirect_to root_path 
+      flash[:danger] = @contacto.errors.full_messages.join(". ")
+      redirect_to new_contacto_path 
     end
   end
     
